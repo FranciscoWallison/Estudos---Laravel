@@ -1,2 +1,2 @@
 # Estudos---Laravel
-Tudo que aprende de relevante coloco aqui para futuros projetos.
+Para por em pratica colocarei aqui tudo que vou aprendendo do mundo laravel.
