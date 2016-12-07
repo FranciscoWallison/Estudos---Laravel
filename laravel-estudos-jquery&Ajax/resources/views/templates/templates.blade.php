@@ -189,6 +189,14 @@
       }
 
     });
+    /*
+    jQuery.ajax({
+          url: "{!! route('reservation.store')   !!}",
+          data: {_token: '{!! csrf_token() !!}' },
+          method: 'post',
+          // Preloader de Dados
+      })
+      */
 </script>
 
 </body>
