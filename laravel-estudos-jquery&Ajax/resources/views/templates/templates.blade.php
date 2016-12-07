@@ -150,7 +150,7 @@
 
       jQuery.ajax({
           url: urlDelete,
-          //data: {'_token': csrf},
+          //data: {_token: '{!! csrf_token() !!}' },
           method: 'GET',
           // Preloader de Dados
           beforeSend: preloaderDelete()
