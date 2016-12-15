@@ -190,9 +190,17 @@
 
     });
     /*
+    ex1:
     jQuery.ajax({
-          url: "{!! route('reservation.store')   !!}",
+          url: "{!! route('expRout1.store')   !!}",
           data: {_token: '{!! csrf_token() !!}' },
+          method: 'post',
+          // Preloader de Dados
+      })
+      ex2:
+      jQuery.ajax({
+          url: "{!! route('expRout1.store')   !!}",
+          data: {_token: '{!! csrf_token() !!}',nameUser: $(this).val() },
           method: 'post',
           // Preloader de Dados
       })
