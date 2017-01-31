@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="loading" style="display: none;">Enviando dados</div>
-	<input type="submit" name="enviar" value="Enviar Dados" class="btn btn-success">
+	<input type="submit" id="btn" name="enviar" value="Enviar Dados" class="btn btn-success" data-loading-text = "Loading..." autocomplete="off">
 </form>
 <script>
 	$(function() {
@@ -40,8 +40,10 @@
 					jQuery(".success-msg").show();
 
 					//depois de 3 segundos ira atualiza a pagina
-					setTimeout("location.reload();",3000);
-
+					setTimeout(function() {
+						location.reload();
+						endPreloader();//finaliza - quando completar a minha requisição ira chama o metodo 
+					},3000);
 
 				}else{
 
@@ -59,14 +61,12 @@
 			function preloader()
 			{
 				//inicia
-				jQuery(".preloader").show();
+				$('#btn').button('loading');
 			}
-
 			function endPreloader()
 			{
 				//finalizar
-				jQuery(".preloader").hide();				
-
+				$('#btn').button('reset');
 			}
 
 			return false;
