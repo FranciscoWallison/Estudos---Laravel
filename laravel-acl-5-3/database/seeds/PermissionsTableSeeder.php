@@ -16,22 +16,22 @@ class PermissionsTableSeeder extends Seeder
             'id'            =>  '1',
             'name' 			=> 	'view_post',
             'label' 		=> 	'Visualiza o Post',
-            'created_at' => '2017-02-7 02:03:02',
-            'updated_at' => '2017-02-07 02:33:50',
+            'created_at'    =>  '2017-02-7 02:03:02',
+            'updated_at'    =>  '2017-02-07 02:33:50',
         ]);
         DB::table('permissions')->insert([
             'id'            =>  '2',
             'name' 			=> 	'edit_post',
             'label' 		=> 	'Editar o Post',
-            'created_at' => '2017-02-7 02:03:02',
-            'updated_at' => '2017-02-07 02:33:50',
+            'created_at'    =>  '2017-02-7 02:03:02',
+            'updated_at'    =>  '2017-02-07 02:33:50',
         ]);
         DB::table('permissions')->insert([
             'id'            =>  '3',
             'name' 			=> 	'delete_post',
             'label' 		=> 	'Deletar o Post',
-            'created_at' => '2017-02-7 02:03:02',
-            'updated_at' => '2017-02-07 02:33:50',
+            'created_at'    =>  '2017-02-7 02:03:02',
+            'updated_at'    =>  '2017-02-07 02:33:50',
         ]);
 
         //permission_role
