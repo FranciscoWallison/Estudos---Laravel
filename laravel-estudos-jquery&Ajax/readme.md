@@ -1,2 +1,2 @@
 ## Laravel PHP Framework #jquery&Ajax
-  Larvel 5.2
+  Laravel 5.2
