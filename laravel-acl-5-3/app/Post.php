@@ -20,12 +20,12 @@ class Post extends Model
     //Eloquent: Mutators
     public function setCreatedAtAttribute($date)
     {
-        $this->attributes['date_meeting'] =  Carbon::parse('Y-m-d',$date);
+        $this->attributes['created_at'] = Carbon::parse('Y-m-d H:i:s',$date);
     }
    //Eloquent: Mutators
     public function getCreatedAtAttribute($date)
     {
-        return Carbon::parse($date)->format('d/m/Y');
+        return Carbon::parse($date)->format('d/m/Y H:i:s');
     }
     
 }
