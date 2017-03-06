@@ -42,9 +42,8 @@ class User extends Authenticatable
     {
         if (is_array($roles) || is_object($roles) )
         {
-            foreach ($roles as $role) {
-                return $this->roles->contains('name', $role->name);
-            }
+            //verificar ser retorna algun papel
+            return !! $roles->intersect($this->roles)->count();
         }
 
         return $this->roles->contains('name', $roles);

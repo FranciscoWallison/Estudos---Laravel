@@ -38,9 +38,26 @@ class HomeController extends Controller
         $post = Post::find($idPost);
 
         //Valideition autorized
-        if( Gate::denies('update-post',$post) )
+        if( Gate::denies('edit_post',$post) )
             abort(403,'Não Autorizado');
 
         return view('update-post', compact('post'));
+    }
+
+    public function rolesPermissions()
+    {
+        $nameUser = auth()->user()->name;
+
+        var_dump("<h1>{ $nameUser }</h1>");
+
+        foreach (auth()->user()->roles as $role) {
+            echo "<b>{$role->name}</b>". " -> ";
+
+            $permissions = $role->permissions;
+            foreach ($permissions as $permission) {
+                echo " {$permission->name}  ";
+            }
+             echo "<hr> ";
+        }
     }
 }
