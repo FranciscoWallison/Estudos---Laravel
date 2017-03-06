@@ -26,4 +26,6 @@ class PostPolicy
         // Valideition autorized
         return $user->id == $post->user_id;
     }
+
+    
 }

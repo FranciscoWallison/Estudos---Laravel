@@ -38,17 +38,22 @@ class RolesTableSeeder extends Seeder
         DB::table('role_user')->insert([
             'id'            =>  '1',            
             'role_id'       =>  '3',//adm
-            'user_id'       =>  '1',//Wall
+            'user_id'       =>  '1',//usert1
         ]);
         DB::table('role_user')->insert([
             'id'            =>  '2',            
             'role_id'       =>  '1',//manager
-            'user_id'       =>  '1',//Wall
+            'user_id'       =>  '1',//usert1
         ]);
         DB::table('role_user')->insert([
             'id'            =>  '3',            
             'role_id'       =>  '2',//editor
-            'user_id'       =>  '2',//Wall-2
+            'user_id'       =>  '2',//usert2
+        ]);
+        DB::table('role_user')->insert([
+            'id'            =>  '4',            
+            'role_id'       =>  '1',//manager
+            'user_id'       =>  '3',//usert3
         ]);
 
     }
