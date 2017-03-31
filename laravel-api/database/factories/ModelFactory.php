@@ -27,6 +27,6 @@ $factory->define(\App\Models\Product::class, function (Faker\Generator $faker) {
 
     return [
         'name' => $faker->word,
-        'description' => $faker->sentences(),
+        'description' => $faker->sentence(),
     ];
 });
