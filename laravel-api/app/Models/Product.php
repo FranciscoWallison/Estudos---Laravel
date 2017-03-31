@@ -11,5 +11,18 @@ class Product extends Model
      * Campos que podem ser prenchidos
      * @var array
      */
-    protected $fillable= ['name','description'];
+    protected $fillable = ['name','description'];
+
+    /**
+     * Validate
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name'          => 'required|mid:3|max:100|unique:products',
+            'description'   => 'required|mid:3|max:1000'
+        ];
+    }
+
 }
