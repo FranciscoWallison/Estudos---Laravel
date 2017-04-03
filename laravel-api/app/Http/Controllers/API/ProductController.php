@@ -42,7 +42,7 @@ class ProductController extends Controller
         //Valid erros
         if( $validate->fails() )
         {
-            $messagens = $validate->getMessageBag();
+            $messagens = $validate->messages();
             return  response()->json(['validate.error', $messagens]);
         }
 
@@ -64,7 +64,7 @@ class ProductController extends Controller
         $product = $this->product->find($id);
 
         if(!$product)
-            return response()->json(['error'=>'notfaund']);
+            return response()->json(['error'=>'not_faund']);
 
         return response()->json(['data'=>$product]);
     }
@@ -78,7 +78,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Valid erros
+        $data = $request->all();
+
+        $validate = validator($data , $this->product->rules($id) );
+        if( $validate->fails() )
+        {
+            $messagens = $validate->messages();
+            return  response()->json(['validate.error', $messagens]);
+        }
+
+        $product = $this->product->find($id);
+        if(!$product)
+            return response()->json(['error'=>'product_not_faund']);
+
+
+        $update = $product->update($data);
+        if(!$update)
+            return response()->json(['error'=>'product_not_update'],500);
+
+        return response()->json(['response'=>$update]);
     }
 
     /**
@@ -91,4 +110,5 @@ class ProductController extends Controller
     {
         //
     }
+
 }

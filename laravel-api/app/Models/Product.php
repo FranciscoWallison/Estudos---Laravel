@@ -17,10 +17,10 @@ class Product extends Model
      * Validate
      * @return array
      */
-    public function rules()
+    public function rules($id='')
     {
         return [
-            'name'          => 'required|min:3|max:100|unique:products',
+            'name'          => "required|min:3|max:100|unique:products,name,{$id},id",
             'description'   => 'required|min:3|max:1000'
         ];
     }
