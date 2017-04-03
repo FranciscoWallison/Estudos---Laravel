@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Http\Requests\API\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -38,13 +39,14 @@ class ProductController extends Controller
 
         $validate = validator($data , $this->product->rules() );
 
+        //Valid erros
         if( $validate->fails() )
         {
             $messagens = $validate->getMessageBag();
-             return  response()->json(['validate.error', $messagens]);
+            return  response()->json(['validate.error', $messagens]);
         }
 
-        //
+        //Erro create
         if(!$insert = $this->product->create($data))
             return  response()->json(['error' => 'error_insert'] , 500 );
 
