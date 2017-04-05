@@ -10,7 +10,6 @@ $this->group(['prefix' => 'v1'], function () {
 
 /*
  * Exemplo de versionamento
- * 
 $this->group(['prefix' => 'v2'], function () {
 
     $this->resource('products', 'API\V2\ProductController', ['except' => [
