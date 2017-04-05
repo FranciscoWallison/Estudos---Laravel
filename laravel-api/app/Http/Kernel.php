@@ -55,6 +55,10 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        /*
+            Para alterar a mensagem de caso erro tenho excedido o excesso de requisições
+            EXP: 'throttle' => \App\Http\Middleware\ThrottleMiddle::class,
+        */
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 }
