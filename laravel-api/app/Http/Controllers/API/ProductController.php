@@ -43,7 +43,7 @@ class ProductController extends Controller
         if( $validate->fails() )
         {
             $messagens = $validate->messages();
-            return  response()->json(['validate.error', $messagens]);
+            return  response()->json(['validate.error', $messagens],500);
         }
 
         //Erro create
@@ -64,7 +64,7 @@ class ProductController extends Controller
         $product = $this->product->find($id);
 
         if(!$product)
-            return response()->json(['error'=>'not_faund']);
+            return response()->json(['error'=>'product_not_faund'],404);
 
         return response()->json(['data'=>$product]);
     }
@@ -90,7 +90,7 @@ class ProductController extends Controller
 
         $product = $this->product->find($id);
         if(!$product)
-            return response()->json(['error'=>'product_not_faund']);
+            return response()->json(['error'=>'product_not_faund'],404);
 
 
         $update = $product->update($data);
@@ -108,7 +108,17 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $product = $this->product->find($id);
+        if(!$product)
+            return response()->json(['error'=>'product_not_faund'],404);
+
+        $delete = $product->delete();
+        if(!$delete)
+            return response()->json(['error'=>'product_not_delete'],500);
+
+        return response()->json(['response'=>$delete]);
+
     }
 
 }
