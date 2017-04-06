@@ -10,6 +10,7 @@ use App\Http\Requests\API\ProductRequest;
 class ProductController extends Controller
 {
     private $product;
+    private $totalPage = 5;
     public  function  __construct(Product $product)
     {
         $this->product = $product;
@@ -22,7 +23,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->product->all();
+        $products = $this->product->paginate($this->totalPage);
 
         return response()->json(['data' => $products]);
     }
@@ -118,6 +119,24 @@ class ProductController extends Controller
             return response()->json(['error'=>'product_not_delete'],500);
 
         return response()->json(['response'=>$delete]);
+
+    }
+
+    public function  search(Request $request)
+    {
+        $data = $request->all();
+
+        $validate = validator($data , $this->product->rulesSearch() );
+        if( $validate->fails() )
+        {
+            $messagens = $validate->messages();
+            return  response()->json(['validate.error', $messagens]);
+        }
+
+        $products = $this->product->search($data, $this->totalPage);
+
+
+        return response()->json(['data' => $products]);
 
     }
 
