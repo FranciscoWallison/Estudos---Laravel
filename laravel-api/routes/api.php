@@ -1,18 +1,21 @@
 <?php
 
-use Illuminate\Http\Request;
+$this->group(['prefix' => 'v1'], function () {
+
+    $this->post('products/search', 'API\V1\ProductController@search');
+    $this->resource('products', 'API\V1\ProductController', ['except' => [
+        'create', 'edit'
+    ]]);
+
+});
 
 /*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+ * Exemplo de versionamento
+$this->group(['prefix' => 'v2'], function () {
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    $this->resource('products', 'API\V2\ProductController', ['except' => [
+        'create', 'edit'
+    ]]);
+
 });
+*/
