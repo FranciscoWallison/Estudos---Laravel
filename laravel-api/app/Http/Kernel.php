@@ -60,5 +60,9 @@ class Kernel extends HttpKernel
             EXP: 'throttle' => \App\Http\Middleware\ThrottleMiddle::class,
         */
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        //Middleware Authentication API
+        'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+
     ];
 }
