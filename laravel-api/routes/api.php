@@ -2,10 +2,16 @@
 
 $this->group(['prefix' => 'v1'], function () {
 
-    $this->post('products/search', 'API\V1\ProductController@search');
-    $this->resource('products', 'API\V1\ProductController', ['except' => [
-        'create', 'edit'
-    ]]);
+
+    $this->group(['middleware'=>'jwt.auth'], function (){
+
+        $this->post('products/search', 'API\V1\ProductController@search');
+        $this->resource('products', 'API\V1\ProductController', ['except' => [
+            'create', 'edit'
+        ]]);
+
+    });
+
 
 });
 
