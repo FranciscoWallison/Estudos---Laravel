@@ -44,7 +44,7 @@ class ProductController extends Controller
         if( $validate->fails() )
         {
             $messagens = $validate->messages();
-            return  response()->json(['validate.error', $messagens],500);
+            return  response()->json(['validate.error', $messagens], 422);
         }
 
         //Erro create
@@ -86,7 +86,7 @@ class ProductController extends Controller
         if( $validate->fails() )
         {
             $messagens = $validate->messages();
-            return  response()->json(['validate.error', $messagens]);
+            return  response()->json(['validate.error', $messagens], 422);
         }
 
         $product = $this->product->find($id);
@@ -130,7 +130,7 @@ class ProductController extends Controller
         if( $validate->fails() )
         {
             $messagens = $validate->messages();
-            return  response()->json(['validate.error', $messagens]);
+            return  response()->json(['validate.error', $messagens], 422);
         }
 
         $products = $this->product->search($data, $this->totalPage);

@@ -180,6 +180,10 @@ return [
          * Api Authentication
          */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        /**
+         * CORS (Cross-Origin Resource Sharing)
+         */
+        Barryvdh\Cors\ServiceProvider::class,
 
     ],
 
