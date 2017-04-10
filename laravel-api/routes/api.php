@@ -3,6 +3,7 @@
 $this->group(['prefix' => 'v1'], function () {
 
     $this->post('auth', 'Auth\AuthApiController@authenticate');
+    $this->post('auth_refresh', 'Auth\AuthApiController@refreshToken');
 
     $this->group(['middleware'=>'jwt.auth'], function (){
 
