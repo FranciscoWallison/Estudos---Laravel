@@ -2,6 +2,7 @@
 
 $this->group(['prefix' => 'v1'], function () {
 
+    $this->post('auth', 'Auth\AuthApiController@authenticate');
 
     $this->group(['middleware'=>'jwt.auth'], function (){
 
