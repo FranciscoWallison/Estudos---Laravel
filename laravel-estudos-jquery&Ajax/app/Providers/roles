@@ -1,0 +1,7 @@
+        ```
+        //valida login
+        $this->app['validator']->extend('alpha_spaces', function($attribute, $value)
+        {
+            return preg_match('/^[A-Za-z][A-Za-z0-9!@#$%^&*_-]*$/', $value);
+        });
+        ```
