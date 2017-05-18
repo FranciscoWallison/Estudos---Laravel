@@ -31,31 +31,30 @@
 				method: 'POST',
 				// Preloader de Dados
 				beforeSend: preloader()
+				success: function(data) {
+         				if( data == "1" ){
+						jQuery(".errors-msg").hide();
+						jQuery(".success-msg").html('Cadastrado');
+						jQuery(".success-msg").show();
 
-			}).done(function(data){
-				
-				if( data == "1" ){
-					jQuery(".errors-msg").hide();
-					jQuery(".success-msg").html('Cadastrado');
-					jQuery(".success-msg").show();
+						//depois de 3 segundos ira atualiza a pagina
+						setTimeout(function() {
+							location.reload();
+							endPreloader();//finaliza - quando completar a minha requisição ira chama o metodo 
+						},3000);
 
-					//depois de 3 segundos ira atualiza a pagina
-					setTimeout(function() {
-						location.reload();
-						endPreloader();//finaliza - quando completar a minha requisição ira chama o metodo 
-					},3000);
+					}else{
 
-				}else{
+						jQuery(".errors-msg").html(data);
+						jQuery(".errors-msg").show();
 
-					jQuery(".errors-msg").html(data);
-					jQuery(".errors-msg").show();
-
+					}
+				},
+				error: function(){
+				   alert('falha oa enviar os dados');
+					//}).complete(function(){
+					endPreloader();//finaliza - quando completar a minha requisição ira chama o metodo 
 				}
-				
-			}).fail(function(){
-				alert('falha oa enviar os dados');
-			//}).complete(function(){
-				endPreloader();//finaliza - quando completar a minha requisição ira chama o metodo 
 			});
 
 			function preloader()
